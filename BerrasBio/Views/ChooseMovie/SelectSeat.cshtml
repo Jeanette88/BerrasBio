@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BerrasBio.Models.Booking>
+
+
+<form method="post" action="SelectSeat">
+    <label for="seats"> Hur många Sittplatser?</label>
+    <select name="NumberOfSeats" id="seats">
+
+        @foreach (var item in Model)
+        {
+            @for (var i = 1; i <= item.SeatsLeft; i++)
+            {
+                <option value="@i">@i</option>
+
+            }
+
+        }
+    </select>
+
+    <label for="txtMail">Ange din Mail adress för att kunna boka.</label>
+    <input type="email" id="txtMail" name="Mail" required />
+    <input type="hidden" value=@ViewData["ScheduleId"] name="ScheduleId" />
+
+    <button type="submit">Boka! </button>
+
+</form>
+
+
+<hr>
+<button name="back-btn">&larr;<a asp-action="Index"> Tillbaka!  </a></button>
+</hr>
+
+
+

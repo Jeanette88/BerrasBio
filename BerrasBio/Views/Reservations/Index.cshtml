@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BerrasBio.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Reservationer</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduledMovie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledMovie.Id)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

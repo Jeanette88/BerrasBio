@@ -1,0 +1,97 @@
+﻿@model IEnumerable<BerrasBio.Models.Booking>
+
+
+<table name="booking" id="booking">
+
+    <thead>
+        <tr>
+
+            <th>
+                    @Html.DisplayNameFor(model => model.MovieId)
+            </th>
+            <th></th>
+            <th>
+                    @Html.DisplayNameFor(model => model.MovieStart)
+            </th>
+            <th></th>
+            <th>
+                    @Html.DisplayNameFor(model => model.MovieEnd)
+            </th>
+            <th></th>
+            <th>
+                    @Html.DisplayNameFor(model => model.AuditoriumName)
+            </th>
+            <th></th>
+            <th>
+                    @Html.DisplayNameFor(model => model.SeatsLeft)
+            </th>
+        </tr>
+    </thead>
+   
+    <tbody>
+            
+        @foreach (var item in Model)
+        {
+             
+            if (item.SeatsLeft == 0)
+            {
+                <tr class="fullseat">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieId)  . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieStart) . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieEnd) . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuditoriumName) . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        <p>Fullt!</p>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieId)  . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieStart) . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieEnd) . . .
+                    </td>
+                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuditoriumName) . . .
+                    </td>
+                    <th></th>
+                    <td>                       
+                        <a asp-action="SelectSeat" asp-route-sorting=@ViewData["seatLeft"] asp-route-id=@item.ScheduleId> @Html.DisplayFor(modelItem => item.SeatsLeft)  ------>  Boka!</a>
+                    </td>
+                    <th></th>
+
+                    <td>
+                    </td>
+
+                </tr>
+            }
+        }
+      
+    </tbody>
+</table>
+
+
+<hr>
+<button name="back-btn">&larr;<a asp-action="Index"> Tillbaka!  </a></button>
+</hr>

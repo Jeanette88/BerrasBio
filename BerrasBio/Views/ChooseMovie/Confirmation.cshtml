@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BerrasBio.Models.ConfirmationModel>
+
+<hr>
+<h3>Bokningsbekräftelse!</h3>
+    </hr>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <p>Mail: @item.Mail</p>
+        <p>Film: @item.Movie</p>
+        <p>Salong: @item.AuditoriumId</p>
+        <p>Start: @item.Start</p>
+        <p>Reservations nr: @item.ReservationId</p>
+
+    }
+</div>
+
+<hr>
+<button name="back-btn">&larr;<a asp-action="Index"> Tillbaka!  </a></button>
+</hr>
